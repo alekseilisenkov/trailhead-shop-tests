@@ -14,7 +14,7 @@ public interface ProjectConfig extends Config {
     String browser();
     @DefaultValue("91.0")
     String browserVersion();
-    @DefaultValue("1920x1080")
+    @DefaultValue("3840x2400")
     String browserSize();
     String browserMobileView();
     String remoteDriverUrl();

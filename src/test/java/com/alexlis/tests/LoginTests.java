@@ -1,4 +1,4 @@
-package com.alexlis.tests.demowebshop;
+package com.alexlis.tests;
 
 import com.alexlis.config.demowebshop.App;
 import com.alexlis.helpers.AllureRestAssuredFilter;
