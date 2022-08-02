@@ -1,6 +1,7 @@
 package com.alexlis.pages;
 
 
+import com.alexlis.pages.components.AuthModalForm;
 import com.codeborne.selenide.SelenideElement;
 
 import java.util.Map;
@@ -13,12 +14,14 @@ import static io.qameta.allure.Allure.step;
 
 public class PageObjects {
 
+    public AuthModalForm authModalForm = new AuthModalForm();
+
     private final String LOGIN = "Jvcr1234";
     private final String PASSWORD = "alexlisenkov92@mail.ru";
     private final String URL = "https://www.34play.me/";
     private final String ERROR_MESSAGE = "Логин/пароль не верен";
     private final String BANNER = "Официальный интернет магазин 34 PLAY";
-//    private final Map<String>(x, y)
+    private final String EMPTY_BIN_TEXT = "В корзине ничего нет";
 
     private SelenideElement
             ageButtonYes = $("[data-action=confirm]"),
@@ -27,9 +30,6 @@ public class PageObjects {
             manTitle = $$(".nav").findBy(text("Мужчины")).$("a"),
             manTitleHover = $(".subnav__list"),
             inputButton = $("[data-action=userLogin]"),
-            loginInput = $("[name=login]"),
-            passwordInput = $("[name=password]"),
-            confirmAuthorizationButton = $(".submit"),
             personalAccountButton = $(".lk"),
             privateDataTabDropDown = $(byText("Личные данные")),
             personalAccountPage = $(".account__data-container"),
@@ -91,14 +91,6 @@ public class PageObjects {
                 inputButton.click());
     }
 
-    public void userAuth(String login, String password) {
-        step("Авторизация", () -> {
-            loginInput.setValue(login);
-            passwordInput.setValue(password);
-            confirmAuthorizationButton.click();
-        });
-    }
-
     public void switchToPersonalAccountPage() {
         step("Переход в личный кабинет", () -> {
             personalAccountButton.hover();
@@ -148,9 +140,9 @@ public class PageObjects {
         });
     }
 
-    public void checkForAddedItemInShoppingBag() {
+    public void checkForAddedItemInShoppingBag(String size) {
         step("Проверка размера и артикула товара в корзине", () -> {
-            clothesSize.has(text("L"));
+            clothesSize.has(text(size));
             vendorCodeForm.shouldHave(text("MHD096F-NOPRI1-GR21"));
         });
     }
@@ -170,7 +162,7 @@ public class PageObjects {
 
     public void checkForEmptyBin() {
         step("Проверка корзины", () ->
-                emptyBinPage.shouldHave(text("В корзине ничего нет"))
+                emptyBinPage.shouldHave(text(EMPTY_BIN_TEXT))
         );
     }
 

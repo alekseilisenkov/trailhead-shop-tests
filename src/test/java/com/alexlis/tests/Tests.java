@@ -42,43 +42,6 @@ public class Tests extends TestBase {
         pageObjects.checkManTitle();
     }
 
-    @DisplayName("Авторизация в личном кабинете")
-    @Test
-    void oauthValidation() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.userAuth("alexlisenkov92@mail.ru", "Jvcr1234");
-        pageObjects.switchToPersonalAccountPage();
-
-        pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
-    }
-
-    @DisplayName("Проверка ввода невалидного логина")
-    @Test
-    void insertNegativeNameAuthCheck() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.userAuth("simple@mail.ru", "Jvcr1234");
-
-        pageObjects.checkForAuthorizationError();
-    }
-
-    @DisplayName("Проверка ввода невалидного пароля")
-    @Test
-    void insertNegativePasswordAuthCheck() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.userAuth("simple@mail.ru", "1234");
-
-        pageObjects.checkForAuthorizationError();
-    }
-
     @DisplayName("Добавление товара в корзину")
     @Test
     void addItemToCart() {
@@ -89,7 +52,7 @@ public class Tests extends TestBase {
         pageObjects.addFirstItemInShoppingBag();
         pageObjects.switchToShoppingBag();
 
-        pageObjects.checkForAddedItemInShoppingBag();
+        pageObjects.checkForAddedItemInShoppingBag("L");
     }
 
     @DisplayName("Удаление товара из корзины")
