@@ -26,7 +26,7 @@ public class GeneratedTests extends TestBase {
     @DisplayName("Page title should have header text")
     void titleTest() {
         step("Open url 'https://www.34play.me/'", () ->
-            open("https://www.34play.me/"));
+                open("https://www.34play.me/"));
 
         step("Page title should have text 'Интернет-магазин уличной одежды 34Play'", () -> {
             String expectedTitle = "Интернет-магазин уличной одежды 34Play";

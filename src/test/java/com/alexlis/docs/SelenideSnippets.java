@@ -106,6 +106,9 @@ public class SelenideSnippets {
         // complex actions with keybord and mouse, example
         actions().moveToElement($("div")).clickAndHold().moveByOffset(300, 200).release().perform();
 
+        // drag and drop (optional)
+        $("div").dragAndDropTo("div", DragAndDropOptions.usingJavaScript());
+
         // old html actions don't work with many modern frameworks
         $("").selectOption("dropdown_option");
         $("").selectRadio("radio_options");
