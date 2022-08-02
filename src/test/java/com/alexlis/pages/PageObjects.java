@@ -194,7 +194,7 @@ public class PageObjects {
 
     public void checkForMaxValueFiltersResult(String price) {
         step("Проверка отсутствия товаров с невалидной ценой в списке", () ->
-                filterGenderUnit.shouldNotHave(text(price))
+                filterResultUnit.shouldNotHave(text(price))
         );
     }
 }
