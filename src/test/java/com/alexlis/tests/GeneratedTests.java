@@ -50,4 +50,5 @@ public class GeneratedTests extends TestBase {
             assertThat(consoleLogs).doesNotContain(errorText);
         });
     }
+
 }
