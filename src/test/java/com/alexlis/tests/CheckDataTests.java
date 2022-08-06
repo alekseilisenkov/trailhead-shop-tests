@@ -47,7 +47,6 @@ public class CheckDataTests extends TestBase {
     @Story("Main tests")
     @Feature("ShoppingBag")
     @DisplayName("Добавление товара в корзину")
-    @ParameterizedTest
     @Test
     void addItemToCart() {
         pageObjects.openPage();
