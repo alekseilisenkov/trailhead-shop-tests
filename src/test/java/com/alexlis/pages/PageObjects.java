@@ -1,7 +1,5 @@
 package com.alexlis.pages;
 
-
-import com.alexlis.helpers.DriverUtils;
 import com.alexlis.pages.components.AuthModalForm;
 import com.codeborne.selenide.SelenideElement;
 
