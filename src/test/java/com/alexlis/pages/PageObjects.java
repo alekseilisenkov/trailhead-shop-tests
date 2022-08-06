@@ -18,8 +18,8 @@ public class PageObjects {
 
     public AuthModalForm authModalForm = new AuthModalForm();
 
-    private final String LOGIN = "Jvcr1234";
-    private final String PASSWORD = "alexlisenkov92@mail.ru";
+//    private final String LOGIN = "Jvcr1234";
+//    private final String PASSWORD = "alexlisenkov92@mail.ru";
     private final String URL = "https://www.34play.me/";
     private final String ERROR_MESSAGE = "Логин/пароль не верен";
     private final String BANNER = "Официальный интернет магазин 34 PLAY";
