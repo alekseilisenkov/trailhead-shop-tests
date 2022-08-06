@@ -109,21 +109,4 @@ public class LoginTests extends TestBase {
 
         pageObjects.checkForAuthorizationError();
     }
-
-    @Tag("Auth")
-    @Story("Auth tests")
-    @Feature("Negative")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
-    @EnumSource(MenuItem.class)
-    @Test
-    void insertEnumDataInAuthCheck(MenuItem menuItem) {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
-
-        pageObjects.checkForAuthorizationError();
-    }
 }
