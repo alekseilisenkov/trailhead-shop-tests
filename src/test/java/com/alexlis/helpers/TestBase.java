@@ -19,7 +19,7 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        String browserURL = credentials.browserURL();
+        String browserURL = "selenoid.autotests.cloud/wd/hub";
         String browserVersion = System.getProperty("browserVersion");
         String login = credentials.login();
         String password = credentials.password();
@@ -30,13 +30,16 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
-        Configuration.browserCapabilities = capabilities;
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
 
-        if (System.getProperty("remoteUrl") != null) {
-            Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
-        }
+        String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+
+        Configuration.remote = remote;
+
+//        if (System.getProperty("remoteUrl") != null) {
+//            Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
+//        }
     }
 
     @AfterEach
