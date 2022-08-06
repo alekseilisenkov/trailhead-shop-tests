@@ -23,11 +23,6 @@ public class SelenideSnippets {
 
     void browser_command_examples() {
 
-        open("https://google.com");
-        open("/customer/orders");     // -Dselenide.baseUrl=http://google.com
-        open("/", AuthenticationType.BASIC,
-                new BasicAuthCredentials("user", "password"));
-
         Selenide.back();
         Selenide.refresh();
 
@@ -59,14 +54,11 @@ public class SelenideSnippets {
         $(byText("full text")).click();
         $(withText("ull tex")).click();
 
-        $(byTagAndText("div", "full text"));
-        $(withTagAndText("div", "ull text"));
 
         $("").parent();       // find parent element
         $("").sibling(2);     // find down third sibling element
         $("").preceding(0);   // find up first sibling element
         $("").closest("div"); // find up the tree the next element with tag
-        $("").ancestor("div"); // the same as closest
         $("div:last-child");
 
         $("div").$("h1").find(byText("abc")).click();
