@@ -1,61 +1,28 @@
 package com.alexlis.tests;
 
+import com.alexlis.domain.MenuItem;
 import com.alexlis.pages.PageObjects;
 
-import com.github.javafaker.Faker;
-import io.qameta.allure.Step;
-import io.qameta.allure.Story;
+import com.alexlis.utils.RandomUtils;
+
+import io.qameta.allure.*;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import static com.codeborne.selenide.Selenide.$;
-
-
-@Story("Login tests")
 public class LoginTests extends TestBase {
 
-    //    @BeforeAll
-//    static void configureBaseUrl() {
-//        RestAssured.baseURI = App.config.apiUrl();
-//        Configuration.baseUrl = App.config.webUrl();
-//
-//        login = App.config.userLogin();
-//        password = App.config.userPassword();
-//    }
+    TestData testData = new TestData();
     PageObjects pageObjects = new PageObjects();
 
-
-    //Регистрация, есть проблемы с капчей
-    @Test
-    void registrationTest(){
-
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-
-        $("[data-action='userRegister']").click();
-        $(".recaptcha-checkbox-unchecked").hover();
-        $(".recaptcha-checkbox-hover").click();
-    }
-
-
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Positive")
     @DisplayName("Авторизация в личном кабинете")
-    @Step("Авторизация с логином: {} и паролем: {}")
-    @Test
-    void fakerTest() {
-
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow("alexlisenkov92@mail.ru", "Jvcr1234");
-        pageObjects.switchToPersonalAccountPage();
-
-        pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
-    }
-
-    @DisplayName("Авторизация в личном кабинете")
-    @Step("Авторизация с логином: {} и паролем: {}")
+    @Severity(SeverityLevel.BLOCKER)
     @Test
     void oauthValidation() {
         pageObjects.openPage();
@@ -68,28 +35,92 @@ public class LoginTests extends TestBase {
         pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
     }
 
-    @DisplayName("Проверка ввода невалидного логина")
-    @Step("Авторизация с логином: {} и паролем: {}")
-    @Test
-    void insertNegativeNameAuthCheck() {
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Negative")
+    @Severity(SeverityLevel.BLOCKER)
+    @ValueSource(strings = {
+            "simple@mail.ru",
+            "difficult@mail.ru",
+            "strong@mail.ru"
+    })
+    @ParameterizedTest(name = "Проверка ввода невалидного логина: {0}")
+    void insertNegativeNameAuthCheck(String email) {
         pageObjects.openPage();
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
         pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow("simple@mail.ru", "Jvcr1234");
+        pageObjects.authModalForm.userAuthModalWindow(email, "Jvcr1234");
 
         pageObjects.checkForAuthorizationError();
     }
 
-    @DisplayName("Проверка ввода невалидного пароля")
-    @Step("Авторизация с логином: {} и паролем: {}")
-    @Test
-    void insertNegativePasswordAuthCheck() {
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Negative")
+    @Severity(SeverityLevel.BLOCKER)
+    @CsvSource({
+            "simple@mail.ru, 123",
+            "simple@mail.ru, 1234",
+            "simple@mail.ru, 12345",
+            "simple@mail.ru, 123456",
+    })
+    @ParameterizedTest(name = "Проверка ввода логина {0} и невалидного пароля: {1}")
+    void insertNegativePasswordAuthCheck(String email, String password) {
         pageObjects.openPage();
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
         pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow("simple@mail.ru", "1234");
+        pageObjects.authModalForm.userAuthModalWindow(email, password);
+
+        pageObjects.checkForAuthorizationError();
+    }
+
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Negative")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
+    @Test
+    void insertRandomDataInAuthCheck() {
+        pageObjects.openPage();
+        pageObjects.confirmAge();
+        pageObjects.regionConfirm();
+        pageObjects.pressInputButton();
+        pageObjects.authModalForm.userAuthModalWindow(RandomUtils.getRandomEmail(), RandomUtils.getRandomString(5));
+
+        pageObjects.checkForAuthorizationError();
+    }
+
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Negative")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
+    @Test
+    void insertFakerDataInAuthCheck() {
+        pageObjects.openPage();
+        pageObjects.confirmAge();
+        pageObjects.regionConfirm();
+        pageObjects.pressInputButton();
+        pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
+
+        pageObjects.checkForAuthorizationError();
+    }
+
+    @Tag("Auth")
+    @Story("Auth tests")
+    @Feature("Negative")
+    @Severity(SeverityLevel.BLOCKER)
+    @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
+    @EnumSource(MenuItem.class)
+    @Test
+    void insertEnumDataInAuthCheck(MenuItem menuItem) {
+        pageObjects.openPage();
+        pageObjects.confirmAge();
+        pageObjects.regionConfirm();
+        pageObjects.pressInputButton();
+        pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
 
         pageObjects.checkForAuthorizationError();
     }

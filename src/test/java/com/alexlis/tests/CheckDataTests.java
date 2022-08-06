@@ -1,26 +1,23 @@
 package com.alexlis.tests;
 
 import com.alexlis.pages.PageObjects;
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Owner;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
-import static io.qameta.allure.Allure.step;
 
-public class Tests extends TestBase {
-
-    @Test
-    void openPage() {
-        open("https://www.34play.me/");
-    }
+@Owner("Alexey Lisenkov")
+public class CheckDataTests extends TestBase {
 
     private PageObjects pageObjects = new PageObjects();
 
-
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("Navigation")
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
@@ -31,6 +28,9 @@ public class Tests extends TestBase {
         pageObjects.checkHeaders();
     }
 
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("Navigation")
     @DisplayName("Проверка содержания раздела Мужчины")
     @Test
     void manListPageCheck() {
@@ -42,7 +42,11 @@ public class Tests extends TestBase {
         pageObjects.checkManTitle();
     }
 
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("ShoppingBag")
     @DisplayName("Добавление товара в корзину")
+    @ParameterizedTest
     @Test
     void addItemToCart() {
         pageObjects.openPage();
@@ -55,6 +59,9 @@ public class Tests extends TestBase {
         pageObjects.checkForAddedItemInShoppingBag("L");
     }
 
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("ShoppingBag")
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
@@ -69,6 +76,9 @@ public class Tests extends TestBase {
         pageObjects.checkForEmptyBin();
     }
 
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("Navigation")
     @DisplayName("Проверка нижних колонтитулов на главной странице")
     @Test
     void checkFootersMainPage() {
@@ -79,6 +89,9 @@ public class Tests extends TestBase {
         pageObjects.checkForRunnigTitle();
     }
 
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("Filters")
     @DisplayName("Проверка функционала фильтрации товара")
     @Test
     void checkFiltersTest() {

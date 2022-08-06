@@ -1,6 +1,7 @@
 package com.alexlis.pages;
 
 
+import com.alexlis.helpers.DriverUtils;
 import com.alexlis.pages.components.AuthModalForm;
 import com.codeborne.selenide.SelenideElement;
 
@@ -11,6 +12,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PageObjects {
 
@@ -24,9 +26,9 @@ public class PageObjects {
     private final String EMPTY_BIN_TEXT = "В корзине ничего нет";
 
     private SelenideElement
-            ageButtonYes = $("[data-action=confirm]"),
+            ageButtonYes = $("[data-action=confirm]").as("Кнопка ДА"),
             regionButtonYes = $(byText("Да, верно")),
-            headersRaw = $(".nav"),
+            headersRaw = $(".nav").as("Top side bar"),
             manTitle = $$(".nav").findBy(text("Мужчины")).$("a"),
             manTitleHover = $(".subnav__list"),
             inputButton = $("[data-action=userLogin]"),
@@ -53,7 +55,8 @@ public class PageObjects {
             filterGenderUnit = $(byText("Мужское")),
             filterMaxPriceInput = $("#cost_max"),
             filterResultElement = $x("//a[contains(@href, '/good/tolstovka-trailhead-uhd001-nopri1-gr21-gr')]"),
-            filterResultUnit = $(".product");
+            filterResultUnit = $(".product"),
+            resultIncorrectSearchPage = $(".wrapper--flex");
 
 
     public void openPage() {
@@ -189,4 +192,29 @@ public class PageObjects {
                 filterResultUnit.shouldNotHave(text(price))
         );
     }
+
+    public void checkResultIncorrectSearchPage() {
+        step("Проверка отсутствия товаров с невалидной ценой в списке", () ->
+                resultIncorrectSearchPage.shouldHave(text("Возможно, Вы сможете найти то, что Вам нужно в каталоге"))
+        );
+    }
+
+    public void checkConsoleLog() {
+        step("Проверка отсутствия в консоли: 'SEVERE'", () -> {
+            String consoleLogs = DriverUtils.getConsoleLogs();
+            String errorText = "SEVERE";
+
+            assertThat(consoleLogs).doesNotContain(errorText);
+        });
+    }
+
+    public void simpleCheckTitle(){
+        step("Проверка соответствия текста", () -> {
+            String expectedTitle = "Интернет-магазин уличной одежды 34Play";
+            String actualTitle = title();
+
+            assertThat(actualTitle).isEqualTo(expectedTitle);
+        });
+    }
+
 }

@@ -1,27 +1,25 @@
 plugins {
     id 'java-library'
-    id 'io.qameta.allure' version '2.9.6'
+    id 'io.qameta.allure' version '2.8.1'
 }
 
 repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.17.3",
+def allureVersion = "2.16.1",
     selenideVersion = "6.5.0",
     junitVersion = "5.8.2"
 
+
 allure {
-    report {
-        version.set(allureVersion)
-    }
-    adapter {
-        aspectjWeaver.set(true)
-        frameworks {
-            junit5 {
-                adapterVersion.set(allureVersion)
-            }
-        }
+    version = allureVersion
+    autoconfigure = true
+    aspectjweaver = true
+    aspectjVersion = "1.9.7"
+    configuration = "testImplementation"
+    useJUnit5 {
+        version = allureVersion
     }
 }
 
@@ -48,30 +46,34 @@ tasks.withType(JavaCompile) {
 }
 
 tasks.withType(Test) {
-    systemProperties(System.getProperties())
-    useJUnitPlatform()
 
-    if (System.getProperty("threads") != null) {
-        systemProperties += [
-                'junit.jupiter.execution.parallel.enabled'                 : true,
-                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
-                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
-                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
-                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
-        ]
-    }
+    useJUnitPlatform()
 
     testLogging {
         lifecycle {
-//            events "started", "failed"
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
     }
 }
 
-task demowebshop(type: Test) {
+task simpletests(type: Test) {
     useJUnitPlatform {
-        includeTags 'demowebshop'
+        includeTags 'Simple'
     }
+}
+
+task maintests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Main'
+    }
+}
+
+task authtests(type: Test) {
+    useJUnitPlatform {
+        includeTags 'Auth'
+    }
+}
+
+task alltests(type: Test) {
 }
