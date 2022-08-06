@@ -195,15 +195,6 @@ public class PageObjects {
         );
     }
 
-    public void checkConsoleLog() {
-        step("Проверка отсутствия в консоли: 'SEVERE'", () -> {
-            String consoleLogs = DriverUtils.getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
-        });
-    }
-
     public void simpleCheckTitle() {
         step("Проверка соответствия текста", () -> {
             String expectedTitle = "Интернет-магазин уличной одежды 34Play";
