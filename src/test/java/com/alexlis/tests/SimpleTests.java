@@ -1,6 +1,7 @@
 package com.alexlis.tests;
 
 import com.alexlis.domain.MenuItem;
+import com.alexlis.helpers.TestBase;
 import com.alexlis.pages.PageObjects;
 import com.alexlis.pages.SearchValue;
 import io.qameta.allure.Description;
@@ -13,7 +14,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 public class SimpleTests extends TestBase {
 
     PageObjects pageObjects = new PageObjects();
-
     SearchValue searchValue = new SearchValue();
 
     @Tag("Simple")
@@ -47,5 +47,4 @@ public class SimpleTests extends TestBase {
 
         pageObjects.checkConsoleLog();
     }
-
 }

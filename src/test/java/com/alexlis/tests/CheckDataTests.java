@@ -1,5 +1,6 @@
 package com.alexlis.tests;
 
+import com.alexlis.helpers.TestBase;
 import com.alexlis.pages.PageObjects;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;

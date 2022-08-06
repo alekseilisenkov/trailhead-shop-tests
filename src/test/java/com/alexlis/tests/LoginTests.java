@@ -1,6 +1,8 @@
 package com.alexlis.tests;
 
 import com.alexlis.domain.MenuItem;
+import com.alexlis.helpers.TestBase;
+import com.alexlis.helpers.TestData;
 import com.alexlis.pages.PageObjects;
 
 import com.alexlis.utils.RandomUtils;

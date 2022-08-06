@@ -1,7 +1,6 @@
-package com.alexlis.tests;
+package com.alexlis.helpers;
 
 import com.alexlis.config.CredentialsConfig;
-import com.alexlis.helpers.AllureAttachments;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -13,8 +12,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static java.lang.String.format;
 
-
-
 public class TestBase {
 
     public static CredentialsConfig credentials =
@@ -22,11 +19,11 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        String browserURL = System.getProperty("url", credentials.browserURL());
+        String browserURL = credentials.browserURL();
         String browserVersion = System.getProperty("browserVersion");
         String login = credentials.login();
         String password = credentials.password();
-        String browserSize = System.getProperty("browserSize", "1280x1280");
+        String browserSize = System.getProperty("browserSize", "3280x2840");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
