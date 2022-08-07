@@ -65,7 +65,6 @@ public class LoginTests extends TestBase {
             "simple@mail.ru, 123",
             "simple@mail.ru, 1234",
             "simple@mail.ru, 12345",
-            "simple@mail.ru, 123456",
     })
     @ParameterizedTest(name = "Проверка ввода логина {0} и невалидного пароля: {1}")
     void insertNegativePasswordAuthCheck(String email, String password) {
