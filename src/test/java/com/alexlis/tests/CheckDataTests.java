@@ -1,5 +1,6 @@
 package com.alexlis.tests;
 
+import com.alexlis.helpers.TestBase;
 import com.alexlis.pages.PageObjects;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
@@ -46,7 +47,6 @@ public class CheckDataTests extends TestBase {
     @Story("Main tests")
     @Feature("ShoppingBag")
     @DisplayName("Добавление товара в корзину")
-    @ParameterizedTest
     @Test
     void addItemToCart() {
         pageObjects.openPage();

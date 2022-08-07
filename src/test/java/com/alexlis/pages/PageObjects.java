@@ -1,11 +1,7 @@
 package com.alexlis.pages;
 
-
-import com.alexlis.helpers.DriverUtils;
 import com.alexlis.pages.components.AuthModalForm;
 import com.codeborne.selenide.SelenideElement;
-
-import java.util.Map;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -18,8 +14,6 @@ public class PageObjects {
 
     public AuthModalForm authModalForm = new AuthModalForm();
 
-    private final String LOGIN = "Jvcr1234";
-    private final String PASSWORD = "alexlisenkov92@mail.ru";
     private final String URL = "https://www.34play.me/";
     private final String ERROR_MESSAGE = "Логин/пароль не верен";
     private final String BANNER = "Официальный интернет магазин 34 PLAY";
@@ -199,16 +193,7 @@ public class PageObjects {
         );
     }
 
-    public void checkConsoleLog() {
-        step("Проверка отсутствия в консоли: 'SEVERE'", () -> {
-            String consoleLogs = DriverUtils.getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
-        });
-    }
-
-    public void simpleCheckTitle(){
+    public void simpleCheckTitle() {
         step("Проверка соответствия текста", () -> {
             String expectedTitle = "Интернет-магазин уличной одежды 34Play";
             String actualTitle = title();
@@ -216,5 +201,4 @@ public class PageObjects {
             assertThat(actualTitle).isEqualTo(expectedTitle);
         });
     }
-
 }

@@ -1,6 +1,8 @@
 package com.alexlis.tests;
 
 import com.alexlis.domain.MenuItem;
+import com.alexlis.helpers.TestBase;
+import com.alexlis.helpers.TestData;
 import com.alexlis.pages.PageObjects;
 
 import com.alexlis.utils.RandomUtils;
@@ -63,7 +65,6 @@ public class LoginTests extends TestBase {
             "simple@mail.ru, 123",
             "simple@mail.ru, 1234",
             "simple@mail.ru, 12345",
-            "simple@mail.ru, 123456",
     })
     @ParameterizedTest(name = "Проверка ввода логина {0} и невалидного пароля: {1}")
     void insertNegativePasswordAuthCheck(String email, String password) {
@@ -99,23 +100,6 @@ public class LoginTests extends TestBase {
     @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
     @Test
     void insertFakerDataInAuthCheck() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
-
-        pageObjects.checkForAuthorizationError();
-    }
-
-    @Tag("Auth")
-    @Story("Auth tests")
-    @Feature("Negative")
-    @Severity(SeverityLevel.BLOCKER)
-    @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
-    @EnumSource(MenuItem.class)
-    @Test
-    void insertEnumDataInAuthCheck(MenuItem menuItem) {
         pageObjects.openPage();
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
