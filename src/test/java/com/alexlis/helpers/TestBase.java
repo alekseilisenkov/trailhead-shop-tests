@@ -10,11 +10,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static java.lang.String.format;
 
 public class TestBase {
 
     public static CredentialsConfig credentials =
             ConfigFactory.create(CredentialsConfig.class);
+
 
     @BeforeAll
     static void beforeAll() {
@@ -32,10 +34,11 @@ public class TestBase {
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
 
-        String remote = System.getProperty("remote", "https://" + login + ":" + password + "@" + browserURL);
-
-        Configuration.remote = remote;
+        Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
     }
+
+
+
 
     @AfterEach
     public void tearDown() {
