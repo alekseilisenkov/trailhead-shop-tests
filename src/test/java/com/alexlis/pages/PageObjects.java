@@ -36,7 +36,8 @@ public class PageObjects {
             lastItemOfHoodyCatalog = $$(".goodsContainer").last(),
             fastSearchRow = $(byText("Быстрый просмотр")),
             clothingSizeLButton = $("[data-size=L]"),
-            clothingSizeXLButton = $("[data-size=XL]"),
+            clothingSizeXLButton = $("[data-size=M]"),
+            clothingSizeXXLButton = $("[data-size=XXL]"),
             putInShoppingBagButton = $(byText("Положить в корзину")),
             shoppingBagButton = $(".link"),
             clothesSize = $(".table-size"),
@@ -122,6 +123,15 @@ public class PageObjects {
     }
 
     public void addLastItemInShoppingBag() {
+        step("Добавление товара", () -> {
+            lastItemOfHoodyCatalog.click();
+            fastSearchRow.click();
+            clothingSizeXLButton.click();
+            putInShoppingBagButton.click();
+        });
+    }
+
+    public void addXxlSizeItemInShoppingBag() {
         step("Добавление товара", () -> {
             lastItemOfHoodyCatalog.click();
             fastSearchRow.click();

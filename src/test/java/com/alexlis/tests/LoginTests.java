@@ -1,6 +1,5 @@
 package com.alexlis.tests;
 
-import com.alexlis.domain.MenuItem;
 import com.alexlis.helpers.TestBase;
 import com.alexlis.helpers.TestData;
 import com.alexlis.pages.PageObjects;
@@ -12,7 +11,6 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class LoginTests extends TestBase {
@@ -21,9 +19,10 @@ public class LoginTests extends TestBase {
     PageObjects pageObjects = new PageObjects();
 
     @Tag("Auth")
+    @AllureId("11803")
     @Story("Auth tests")
     @Feature("Positive")
-    @DisplayName("Авторизация в личном кабинете")
+    @DisplayName("Авторизация в личном кабинете с личными данными")
     @Severity(SeverityLevel.BLOCKER)
     @Test
     void oauthValidation() {
@@ -31,13 +30,14 @@ public class LoginTests extends TestBase {
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
         pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow("alexlisenkov92@mail.ru", "Jvcr1234");
+        pageObjects.authModalForm.credentialAuth();
         pageObjects.switchToPersonalAccountPage();
 
         pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
     }
 
     @Tag("Auth")
+    @AllureId("11804")
     @Story("Auth tests")
     @Feature("Negative")
     @Severity(SeverityLevel.BLOCKER)
@@ -58,6 +58,7 @@ public class LoginTests extends TestBase {
     }
 
     @Tag("Auth")
+    @AllureId("11806")
     @Story("Auth tests")
     @Feature("Negative")
     @Severity(SeverityLevel.BLOCKER)
@@ -78,6 +79,7 @@ public class LoginTests extends TestBase {
     }
 
     @Tag("Auth")
+    @AllureId("11811")
     @Story("Auth tests")
     @Feature("Negative")
     @Severity(SeverityLevel.BLOCKER)

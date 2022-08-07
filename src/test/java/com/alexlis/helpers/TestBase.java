@@ -13,16 +13,13 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    public static CredentialsConfig credentials =
-            ConfigFactory.create(CredentialsConfig.class);
 
     @BeforeAll
     static void beforeAll() {
-        String browserURL = "selenoid.autotests.cloud/wd/hub";
+
         String browserVersion = System.getProperty("browserVersion");
-        String login = credentials.login();
-        String password = credentials.password();
         String browserSize = System.getProperty("browserSize", "3280x2840");
+        String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -31,11 +28,11 @@ public class TestBase {
 
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-
-        String remote = System.getProperty("remote", "https://" + login + ":" + password + "@" + browserURL);
-
         Configuration.remote = remote;
     }
+
+
+
 
     @AfterEach
     public void tearDown() {

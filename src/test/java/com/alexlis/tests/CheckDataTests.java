@@ -8,7 +8,6 @@ import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
 
 
 @Owner("Alexey Lisenkov")
@@ -46,22 +45,6 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("ShoppingBag")
-    @DisplayName("Добавление товара в корзину")
-    @Test
-    void addItemToCart() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.stepToManCatalog();
-        pageObjects.addFirstItemInShoppingBag();
-        pageObjects.switchToShoppingBag();
-
-        pageObjects.checkForAddedItemInShoppingBag("L");
-    }
-
-    @Tag("Main")
-    @Story("Main tests")
-    @Feature("ShoppingBag")
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
@@ -69,11 +52,27 @@ public class CheckDataTests extends TestBase {
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
         pageObjects.switchToBannerHoodybYImage();
-        pageObjects.addLastItemInShoppingBag();
+        pageObjects.addXxlSizeItemInShoppingBag();
         pageObjects.switchToShoppingBag();
         pageObjects.deleteAddedItemFromShoppingBag();
 
         pageObjects.checkForEmptyBin();
+    }
+
+    @Tag("Main")
+    @Story("Main tests")
+    @Feature("ShoppingBag")
+    @DisplayName("Добавление товара в корзину")
+    @Test
+    void addItemToCart() {
+        pageObjects.openPage();
+        pageObjects.confirmAge();
+        pageObjects.regionConfirm();
+        pageObjects.stepToManCatalog();
+        pageObjects.addXxlSizeItemInShoppingBag();
+        pageObjects.switchToShoppingBag();
+
+        pageObjects.checkForAddedItemInShoppingBag("XXL");
     }
 
     @Tag("Main")
