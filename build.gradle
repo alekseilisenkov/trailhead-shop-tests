@@ -76,4 +76,5 @@ task authtests(type: Test) {
 }
 
 task alltests(type: Test) {
+    useJUnitPlatform {    }
 }
