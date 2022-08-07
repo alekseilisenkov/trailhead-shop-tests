@@ -23,7 +23,7 @@ public class LoginTests extends TestBase {
     @Tag("Auth")
     @Story("Auth tests")
     @Feature("Positive")
-    @DisplayName("Авторизация в личном кабинете")
+    @DisplayName("Авторизация в личном кабинете с личными данными")
     @Severity(SeverityLevel.BLOCKER)
     @Test
     void oauthValidation() {
@@ -31,7 +31,7 @@ public class LoginTests extends TestBase {
         pageObjects.confirmAge();
         pageObjects.regionConfirm();
         pageObjects.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow("alexlisenkov92@mail.ru", "Jvcr1234");
+        pageObjects.authModalForm.credentialAuth();
         pageObjects.switchToPersonalAccountPage();
 
         pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");

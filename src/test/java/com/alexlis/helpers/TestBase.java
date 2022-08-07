@@ -10,21 +10,16 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static java.lang.String.format;
 
 public class TestBase {
-
-    public static CredentialsConfig credentials =
-            ConfigFactory.create(CredentialsConfig.class);
 
 
     @BeforeAll
     static void beforeAll() {
-        String browserURL = System.getProperty("url", credentials.browserURL());
-        String login = credentials.login();
-        String password = credentials.password();
+
         String browserVersion = System.getProperty("browserVersion");
         String browserSize = System.getProperty("browserSize", "3280x2840");
+        String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -33,7 +28,7 @@ public class TestBase {
 
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-        Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
+        Configuration.remote = remote;
     }
 
 
