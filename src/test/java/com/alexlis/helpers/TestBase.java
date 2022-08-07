@@ -10,7 +10,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static java.lang.String.format;
 
 public class TestBase {
 
@@ -33,13 +32,9 @@ public class TestBase {
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
 
-        String remote = System.getProperty("remote", "https://user1:1234@selenoid.autotests.cloud/wd/hub");
+        String remote = System.getProperty("remote", "https://" + login + ":" + password + "@" + browserURL);
 
         Configuration.remote = remote;
-
-//        if (System.getProperty("remoteUrl") != null) {
-//            Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
-//        }
     }
 
     @AfterEach
