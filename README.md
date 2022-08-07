@@ -108,8 +108,3 @@
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/screens/telegram.png" >
 </p>
-
-## <img src="images/logo/Selenoid.svg" width="25" height="25" alt="Jenkins"/></a> Видео <a target="_blank" href="https://selenoid.autotests.cloud/video/fe43b9f89a795109ff4959044e6650d7.mp4"> прохождения тестов </a>
-<p align="center">
-<a href="https://selenoid.autotests.cloud/video/fe43b9f89a795109ff4959044e6650d7.mp4"></a>
-</p>
