@@ -20,10 +20,10 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        String browserURL = "selenoid.autotests.cloud/wd/hub";
-        String browserVersion = System.getProperty("browserVersion");
+        String browserURL = System.getProperty("url", credentials.browserURL());
         String login = credentials.login();
         String password = credentials.password();
+        String browserVersion = System.getProperty("browserVersion");
         String browserSize = System.getProperty("browserSize", "3280x2840");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
@@ -33,7 +33,6 @@ public class TestBase {
 
         Configuration.browserVersion = browserVersion;
         Configuration.browserSize = browserSize;
-
         Configuration.remote = format("https://%s:%s@%s", login, password, browserURL);
     }
 
