@@ -57,16 +57,21 @@
 ## 🧙: Параметры сборки в Jenkins:
 
 :yum: Browser (браузер, по умолчанию chrome)
+
 :zany_face: Version (версия браузера, по умолчанию 100.0)
+
 :smirk: Browser_size (размер окна браузера, по умолчанию 3280x2840)
+
 :relieved: URL (выбор url для теста)
-:woozy_face: REMOTE_DRIVER_URL (адрес удалённого драйвера
+
+:woozy_face: REMOTE_DRIVER_URL (адрес удалённого драйвера)
+
 :cowboy_hat_face: THREADS (выбор количества потоков для запуска)
 
 
 ## <img src="images/logo/Jenkins.svg" width="25" height="25"  alt="Jenkins"/></a> Jenkins <a target="_blank" href="https://jenkins.autotests.cloud/job/IBS_test/"> job </a>
 <p align="center">
-<a href="https://jenkins.autotests.cloud/job/08-alexlis-web/"><img src="images/screens/jenkins.PNG" alt="Jenkins"/></a>
+<a href="https://jenkins.autotests.cloud/job/08-alexlis-web/"><img src="images/screens/jenkins.png" alt="Jenkins"/></a>
 </p>
 
 
@@ -100,42 +105,38 @@ test
 * threads (number of threads)
 
 
-Запускайте тесты с заполненным remote.properties:
+Команда для запуска всех тестов:
 ```bash
-gradle clean test
+gradle clean alltests test
 ```
 
 Запускайте тесты с незаполненным remote.properties:
 ```bash
-gradle clean -DremoteDriverUrl=https://%s:%s@selenoid.autotests.cloud/wd/hub/ -DvideoStorage=https://selenoid.autotests.cloud/video/ -Dthreads=1 test
+gradle clean simple_test test
 ```
 
-Выдать отчет:
-```bash
-allure serve build/allure-results
-```
 ## <img src="images/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Отчет в <a target="_blank" href="https://jenkins.autotests.cloud/job/IBS_test/allure/">Allure report</a>
 
 ## ⛅: Основной отчет
 <p align="center">
-<img title="Allure Overview Dashboard" src="images/screens/report.PNG">
+<img title="Allure Overview Dashboard" src="images/screens/overview.png">
 </p>
 C:\Users\maver\IBS-tests\images\screens\report.PNG
 
 ## 🧪: Тесты
 <p align="center">
-<img title="Allure Tests" src="images/screens/tests.PNG">
+<img title="Allure Tests" src="images/screens/suites.png">
 </p>
 
 ## 💹: Графики
 <p align="center">
-<img title="Allure Tests" src="images/screens/chart.PNG">
+<img title="Allure Tests" src="images/screens/graphs.png">
 </p>
 
 ## <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Allure"/></a> Уведомление в Telegram при помощи бота
 
 <p align="center">
-<img title="Allure Overview Dashboard" src="images/screens/notif.PNG" >
+<img title="Allure Overview Dashboard" src="images/screens/telegram.png" >
 </p>
 
 ## <img src="images/logo/Selenoid.svg" width="25" height="25" alt="Jenkins"/></a> Видео <a target="_blank" href="https://selenoid.autotests.cloud/video/fe43b9f89a795109ff4959044e6650d7.mp4"> прохождения тестов </a>
