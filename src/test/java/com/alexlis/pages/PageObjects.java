@@ -1,6 +1,6 @@
 package com.alexlis.pages;
 
-import com.alexlis.pages.components.AuthModalForm;
+import com.alexlis.pages.authPages.AuthModalForm;
 import com.codeborne.selenide.SelenideElement;
 
 import static com.codeborne.selenide.Condition.text;
@@ -54,9 +54,10 @@ public class PageObjects {
             resultIncorrectSearchPage = $(".wrapper--flex");
 
 
-    public void openPage() {
+    public PageObjects openPage() {
         step("Открыть страницу", () ->
                 open(URL));
+        return this;
     }
 
     public void confirmAge() {

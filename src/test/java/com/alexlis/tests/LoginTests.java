@@ -1,9 +1,9 @@
 package com.alexlis.tests;
 
-import com.alexlis.helpers.TestBase;
 import com.alexlis.helpers.TestData;
 import com.alexlis.pages.PageObjects;
 
+import com.alexlis.pages.confirmActionsPages.ConfirmActionsPage;
 import com.alexlis.utils.RandomUtils;
 
 import io.qameta.allure.*;
@@ -17,6 +17,7 @@ public class LoginTests extends TestBase {
 
     TestData testData = new TestData();
     PageObjects pageObjects = new PageObjects();
+    ConfirmActionsPage confirmActionsPage = new ConfirmActionsPage();
 
     @Tag("Auth")
     @AllureId("11803")

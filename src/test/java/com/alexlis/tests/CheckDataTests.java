@@ -1,10 +1,7 @@
 package com.alexlis.tests;
 
-import com.alexlis.helpers.TestBase;
 import com.alexlis.pages.PageObjects;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,11 +15,13 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
-        pageObjects.openPage();
-        pageObjects.confirmAge();
+        pageObjects
+                .openPage()
+                .confirmAge();
         pageObjects.regionConfirm();
 
         pageObjects.checkHeaders();
@@ -31,6 +30,7 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка содержания раздела Мужчины")
     @Test
     void manListPageCheck() {
@@ -45,6 +45,7 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("ShoppingBag")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
@@ -62,6 +63,7 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("ShoppingBag")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Добавление товара в корзину")
     @Test
     void addItemToCart() {
@@ -78,6 +80,7 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка нижних колонтитулов на главной странице")
     @Test
     void checkFootersMainPage() {
@@ -91,6 +94,7 @@ public class CheckDataTests extends TestBase {
     @Tag("Main")
     @Story("Main tests")
     @Feature("Filters")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка функционала фильтрации товара")
     @Test
     void checkFiltersTest() {

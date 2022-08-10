@@ -1,4 +1,4 @@
-package com.alexlis.pages.components;
+package com.alexlis.pages.authPages;
 
 import com.alexlis.config.CredentialsConfig;
 import com.codeborne.selenide.SelenideElement;
