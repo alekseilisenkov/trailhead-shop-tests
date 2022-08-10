@@ -1,4 +1,4 @@
-package com.alexlis.pages.authPages;
+package com.alexlis.pages;
 
 import com.alexlis.config.CredentialsConfig;
 import com.codeborne.selenide.SelenideElement;
@@ -20,7 +20,7 @@ public class AuthModalForm {
             passwordInput = $("[name=password]"),
             confirmAuthorizationButton = $(".submit");
 
-    public void credentialAuth(){
+    public void credentialAuth() {
         loginInput.setValue(login);
         passwordInput.setValue(password);
         confirmAuthorizationButton.click();

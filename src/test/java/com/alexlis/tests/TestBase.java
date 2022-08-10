@@ -2,6 +2,8 @@ package com.alexlis.tests;
 
 import com.alexlis.helpers.AllureAttachments;
 import com.alexlis.helpers.DriverSetting;
+import com.alexlis.helpers.TestData;
+import com.alexlis.pages.*;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.junit5.AllureJunit5;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -16,6 +18,14 @@ import static io.qameta.allure.Allure.step;
 
 @ExtendWith(AllureJunit5.class)
 public class TestBase extends DriverSetting {
+
+    OpenPages pageObjects = new OpenPages();
+    ConfirmActionsPage confirmActionsPage = new ConfirmActionsPage();
+    NavigationElementsPages navigationElementsPages = new NavigationElementsPages();
+    ItemActionsPages itemActionsPages = new ItemActionsPages();
+    CheckupPages checkupPages = new CheckupPages();
+    TestData testData = new TestData();
+    SearchValue searchValue = new SearchValue();
 
     @BeforeAll
     static void beforeAll() {

@@ -1,6 +1,6 @@
 package com.alexlis.tests;
 
-import com.alexlis.pages.PageObjects;
+import com.alexlis.pages.*;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -10,8 +10,6 @@ import org.junit.jupiter.api.Test;
 @Owner("Alexey Lisenkov")
 public class CheckDataTests extends TestBase {
 
-    private PageObjects pageObjects = new PageObjects();
-
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
@@ -19,12 +17,11 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
-        pageObjects
-                .openPage()
-                .confirmAge();
-        pageObjects.regionConfirm();
+        pageObjects.openPage();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
 
-        pageObjects.checkHeaders();
+        checkupPages.checkHeaders();
     }
 
     @Tag("Main")
@@ -35,11 +32,11 @@ public class CheckDataTests extends TestBase {
     @Test
     void manListPageCheck() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.getManTitle();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.getManTitle();
 
-        pageObjects.checkManTitle();
+        checkupPages.checkManTitle();
     }
 
     @Tag("Main")
@@ -50,14 +47,14 @@ public class CheckDataTests extends TestBase {
     @Test
     void deleteItemFromCart() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.switchToBannerHoodybYImage();
-        pageObjects.addXxlSizeItemInShoppingBag();
-        pageObjects.switchToShoppingBag();
-        pageObjects.deleteAddedItemFromShoppingBag();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.switchToBannerHoodybYImage();
+        itemActionsPages.addXxlSizeItemInShoppingBag();
+        itemActionsPages.switchToShoppingBag();
+        navigationElementsPages.deleteAddedItemFromShoppingBag();
 
-        pageObjects.checkForEmptyBin();
+        checkupPages.checkForEmptyBin();
     }
 
     @Tag("Main")
@@ -68,13 +65,13 @@ public class CheckDataTests extends TestBase {
     @Test
     void addItemToCart() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.stepToManCatalog();
-        pageObjects.addXxlSizeItemInShoppingBag();
-        pageObjects.switchToShoppingBag();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.stepToManCatalog();
+        itemActionsPages.addXxlSizeItemInShoppingBag();
+        itemActionsPages.switchToShoppingBag();
 
-        pageObjects.checkForAddedItemInShoppingBag("XXL");
+        checkupPages.checkForAddedItemInShoppingBag("XXL");
     }
 
     @Tag("Main")
@@ -85,10 +82,10 @@ public class CheckDataTests extends TestBase {
     @Test
     void checkFootersMainPage() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
 
-        pageObjects.checkForRunnigTitle();
+         checkupPages.checkForRunnigTitle();
     }
 
     @Tag("Main")
@@ -99,12 +96,12 @@ public class CheckDataTests extends TestBase {
     @Test
     void checkFiltersTest() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.switchToBannerHoodybYImage();
-        pageObjects.filterConfig("4299");
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.switchToBannerHoodybYImage();
+        navigationElementsPages.filterConfig("4299");
 
-        pageObjects.checkForFiltersResultElement();
-        pageObjects.checkForMaxValueFiltersResult("6 499");
+        checkupPages.checkForFiltersResultElement();
+        checkupPages.checkForMaxValueFiltersResult("6 499");
     }
 }

@@ -1,4 +1,4 @@
-package com.alexlis.pages.searchPages;
+package com.alexlis.pages;
 
 import com.alexlis.domain.MenuItem;
 

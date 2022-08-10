@@ -1,8 +1,6 @@
 package com.alexlis.tests;
 
 import com.alexlis.domain.MenuItem;
-import com.alexlis.pages.PageObjects;
-import com.alexlis.pages.searchPages.SearchValue;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -12,8 +10,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 public class SimpleTests extends TestBase {
 
-    PageObjects pageObjects = new PageObjects();
-    SearchValue searchValue = new SearchValue();
 
     @Tag("Simple")
     @Story("Simple tests")
@@ -24,11 +20,11 @@ public class SimpleTests extends TestBase {
     @ParameterizedTest(name = "Проверка результатов поиска значения: {0}")
     void searchQueryTest(MenuItem menuItem) {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
         searchValue.searchQuery(menuItem);
 
-        pageObjects.checkResultIncorrectSearchPage();
+        checkupPages.checkResultIncorrectSearchPage();
     }
 
     @Tag("Simple")
@@ -41,6 +37,6 @@ public class SimpleTests extends TestBase {
     void titleTest() {
         pageObjects.openPage();
 
-        pageObjects.simpleCheckTitle();
+        checkupPages.simpleCheckTitle();
     }
 }
