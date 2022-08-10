@@ -48,6 +48,6 @@ public class TestBase extends DriverSetting {
         AllureAttachments.browserConsoleLogs();
         AllureAttachments.addVideo();
         closeWebDriver();
-        step("Закрыть браузер");
+        step("Артефакты прогона: ");
     }
 }
