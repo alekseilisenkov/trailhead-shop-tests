@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CheckupPage extends OpenPage {
+public class CheckupPage {
 
     private final String ERROR_MESSAGE = "Логин/пароль не верен";
     private final String BANNER = "Официальный интернет магазин 34 PLAY";

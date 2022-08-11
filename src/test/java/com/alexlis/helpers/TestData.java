@@ -1,5 +1,6 @@
 package com.alexlis.helpers;
 
+import com.alexlis.tests.TestBase;
 import com.github.javafaker.Faker;
 
 public class TestData {
