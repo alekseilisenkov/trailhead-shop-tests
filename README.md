@@ -95,12 +95,12 @@
 
 ## 🧪: Suites
 <p align="center">
-<img title="Allure Tests" src="images/screens/suites.png">
+<img title="Allure Overview Dashboard" src="images/screens/suites.png">
 </p>
 
 ## 💹: Graphs
 <p align="center">
-<img title="Allure Tests" src="images/screens/graphs.png">
+<img title="Allure Overview Dashboard" src="images/screens/graphs.png">
 </p>
 
 ## <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Allure"/></a> Интеграция уведомлений в telegram
@@ -109,5 +109,12 @@
 <img title="Allure Overview Dashboard" src="images/screens/telegram.png" >
 </p>
 
+## Интеграция с jira:
+<img title="Jira" src="images/screens/Jira.png" >
+
+## Интеграция с Allure TestOPS:
+<img title="TestOps" src="images/screens/allure 1.png" >
+
+
 ## Запись видео из Selenoid при прохождении автотеста:
-![AddDeleteVisitTest](images/gif/123.gif)
+![Test](images/gif/123.gif)
