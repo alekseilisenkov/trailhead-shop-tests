@@ -10,7 +10,6 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 public class SimpleTests extends TestBase {
 
-
     @Tag("Simple")
     @Story("Simple tests")
     @Feature("Positive")
@@ -20,7 +19,7 @@ public class SimpleTests extends TestBase {
     @EnumSource(MenuItem.class)
     @ParameterizedTest(name = "Проверка результатов поиска значения: {0}")
     void searchQueryTest(MenuItem menuItem) {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         searchValue.searchQuery(menuItem);
@@ -36,7 +35,7 @@ public class SimpleTests extends TestBase {
     @DisplayName("Проверка заголовка страницы")
     @Test
     void titleTest() {
-        pageObjects.openPage();
+        openPages.openPage();
 
         checkupPages.simpleCheckTitle();
     }
