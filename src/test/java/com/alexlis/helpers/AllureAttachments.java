@@ -15,7 +15,6 @@ import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static org.openqa.selenium.logging.LogType.BROWSER;
 
 public class AllureAttachments {
-
     @Attachment(value = "{attachName}", type = "text/plain")
     public static String attachAsText(String attachName, String message) {
         return message;
@@ -32,10 +31,15 @@ public class AllureAttachments {
     }
 
     public static void browserConsoleLogs() {
-        attachAsText(
-                "Browser console logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+        if ("firefox".equals(System.getProperty("browserName"))) {
+            attachAsText(
+                    "Browser console logs", "No logs available");
+        } else {
+            attachAsText(
+                    "Browser console logs",
+                    String.join("\n", Selenide.getWebDriverLogs(BROWSER))
+            );
+        }
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")
@@ -47,6 +51,7 @@ public class AllureAttachments {
 
     public static URL getVideoUrl(String sessionId) {
         String videoUrl = "https://selenoid.autotests.cloud/video/" + sessionId + ".mp4";
+
         try {
             return new URL(videoUrl);
         } catch (MalformedURLException e) {

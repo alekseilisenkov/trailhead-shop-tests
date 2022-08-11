@@ -1,9 +1,5 @@
 package com.alexlis.tests;
 
-import com.alexlis.helpers.TestBase;
-import com.alexlis.helpers.TestData;
-import com.alexlis.pages.PageObjects;
-
 import com.alexlis.utils.RandomUtils;
 
 import io.qameta.allure.*;
@@ -15,9 +11,6 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 public class LoginTests extends TestBase {
 
-    TestData testData = new TestData();
-    PageObjects pageObjects = new PageObjects();
-
     @Tag("Auth")
     @AllureId("11803")
     @Story("Auth tests")
@@ -27,13 +20,13 @@ public class LoginTests extends TestBase {
     @Test
     void oauthValidation() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.pressInputButton();
         pageObjects.authModalForm.credentialAuth();
-        pageObjects.switchToPersonalAccountPage();
+        navigationElementsPages.switchToPersonalAccountPage();
 
-        pageObjects.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
+        checkupPages.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
     }
 
     @Tag("Auth")
@@ -49,12 +42,12 @@ public class LoginTests extends TestBase {
     @ParameterizedTest(name = "Проверка ввода невалидного логина: {0}")
     void insertNegativeNameAuthCheck(String email) {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.pressInputButton();
         pageObjects.authModalForm.userAuthModalWindow(email, "Jvcr1234");
 
-        pageObjects.checkForAuthorizationError();
+        checkupPages.checkForAuthorizationError();
     }
 
     @Tag("Auth")
@@ -70,12 +63,12 @@ public class LoginTests extends TestBase {
     @ParameterizedTest(name = "Проверка ввода логина {0} и невалидного пароля: {1}")
     void insertNegativePasswordAuthCheck(String email, String password) {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.pressInputButton();
         pageObjects.authModalForm.userAuthModalWindow(email, password);
 
-        pageObjects.checkForAuthorizationError();
+        checkupPages.checkForAuthorizationError();
     }
 
     @Tag("Auth")
@@ -87,12 +80,12 @@ public class LoginTests extends TestBase {
     @Test
     void insertRandomDataInAuthCheck() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.pressInputButton();
         pageObjects.authModalForm.userAuthModalWindow(RandomUtils.getRandomEmail(), RandomUtils.getRandomString(5));
 
-        pageObjects.checkForAuthorizationError();
+        checkupPages.checkForAuthorizationError();
     }
 
     @Tag("Auth")
@@ -103,11 +96,11 @@ public class LoginTests extends TestBase {
     @Test
     void insertFakerDataInAuthCheck() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.pressInputButton();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.pressInputButton();
         pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
 
-        pageObjects.checkForAuthorizationError();
+        checkupPages.checkForAuthorizationError();
     }
 }

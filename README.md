@@ -95,16 +95,30 @@
 
 ## 🧪: Suites
 <p align="center">
-<img title="Allure Tests" src="images/screens/suites.png">
+<img title="Allure Overview Dashboard" src="images/screens/suites.png">
 </p>
 
 ## 💹: Graphs
 <p align="center">
-<img title="Allure Tests" src="images/screens/graphs.png">
+<img title="Allure Overview Dashboard" src="images/screens/graphs.png">
 </p>
 
-## <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Allure"/></a> Интеграция уведомлений в telegram
+## <img src="images/logo/Telegram.svg" width="25" height="25"  alt="Allure"/></a> Интеграция уведомлений с <a target="_blank" href="https://t.me/autotests_cloud/1602?comment=3921">Telegram</a>
 
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/screens/telegram.png" >
 </p>
+
+
+## <img src="images/logo/Jira.svg" width="25" height="25"  alt="Allure"/></a> Интеграция с <a target="_blank" href="https://jira.autotests.cloud/projects/AUTO/issues/AUTO-1276?filter=allopenissues">Jira</a>
+<img title="Jira" src="images/screens/Jira.png" >
+
+
+## <img src="images/logo/Allure_TO.svg" width="25" height="25"  alt="Allure"/></a> Интеграция с <a target="_blank" href="https://allure.autotests.cloud/project/1529/test-cases?treeId=2929">Allure TestOps</a> 
+<img title="TestOps" src="images/screens/allure 1.png" >
+
+<img title="TestOps" src="images/screens/allure testops 2.png" >
+
+
+## <img src="images/logo/Selenoid.svg" width="25" height="25" alt="Allure"/></a> Запись видео из Selenoid при прохождении автотеста:
+![Test](images/gif/123.gif)

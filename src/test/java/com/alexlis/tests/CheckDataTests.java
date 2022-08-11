@@ -1,10 +1,7 @@
 package com.alexlis.tests;
 
-import com.alexlis.helpers.TestBase;
-import com.alexlis.pages.PageObjects;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Owner;
-import io.qameta.allure.Story;
+import com.alexlis.pages.*;
+import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -13,94 +10,98 @@ import org.junit.jupiter.api.Test;
 @Owner("Alexey Lisenkov")
 public class CheckDataTests extends TestBase {
 
-    private PageObjects pageObjects = new PageObjects();
-
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
 
-        pageObjects.checkHeaders();
+        checkupPages.checkHeaders();
     }
 
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка содержания раздела Мужчины")
     @Test
     void manListPageCheck() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.getManTitle();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.getManTitle();
 
-        pageObjects.checkManTitle();
+        checkupPages.checkManTitle();
     }
 
     @Tag("Main")
     @Story("Main tests")
     @Feature("ShoppingBag")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.switchToBannerHoodybYImage();
-        pageObjects.addXxlSizeItemInShoppingBag();
-        pageObjects.switchToShoppingBag();
-        pageObjects.deleteAddedItemFromShoppingBag();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.switchToBannerHoodybYImage();
+        itemActionsPages.addFirstItemInShoppingBag();
+        itemActionsPages.switchToShoppingBag();
+        navigationElementsPages.deleteAddedItemFromShoppingBag();
 
-        pageObjects.checkForEmptyBin();
+        checkupPages.checkForEmptyBin();
     }
 
     @Tag("Main")
     @Story("Main tests")
     @Feature("ShoppingBag")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Добавление товара в корзину")
     @Test
     void addItemToCart() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.stepToManCatalog();
-        pageObjects.addXxlSizeItemInShoppingBag();
-        pageObjects.switchToShoppingBag();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.stepToManCatalog();
+        itemActionsPages.addLastItemInShoppingBag();
+        itemActionsPages.switchToShoppingBag();
 
-        pageObjects.checkForAddedItemInShoppingBag("XXL");
+        checkupPages.checkForAddedItemInShoppingBag("XL");
     }
 
     @Tag("Main")
     @Story("Main tests")
     @Feature("Navigation")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка нижних колонтитулов на главной странице")
     @Test
     void checkFootersMainPage() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
 
-        pageObjects.checkForRunnigTitle();
+         checkupPages.checkForRunnigTitle();
     }
 
     @Tag("Main")
     @Story("Main tests")
     @Feature("Filters")
+    @Severity(SeverityLevel.CRITICAL)
     @DisplayName("Проверка функционала фильтрации товара")
     @Test
     void checkFiltersTest() {
         pageObjects.openPage();
-        pageObjects.confirmAge();
-        pageObjects.regionConfirm();
-        pageObjects.switchToBannerHoodybYImage();
-        pageObjects.filterConfig("4299");
+        confirmActionsPage.confirmAge();
+        confirmActionsPage.regionConfirm();
+        navigationElementsPages.switchToBannerHoodybYImage();
+        navigationElementsPages.filterConfig("4299");
 
-        pageObjects.checkForFiltersResultElement();
-        pageObjects.checkForMaxValueFiltersResult("6 499");
+        checkupPages.checkForFiltersResultElement();
+        checkupPages.checkForMaxValueFiltersResult("6 499");
     }
 }
