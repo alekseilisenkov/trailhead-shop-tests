@@ -19,11 +19,11 @@ public class LoginTests extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @Test
     void oauthValidation() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.pressInputButton();
-        pageObjects.authModalForm.credentialAuth();
+        openPages.authModalForm.credentialAuth();
         navigationElementsPages.switchToPersonalAccountPage();
 
         checkupPages.checkForDataInPersonalAccount("Лисенков Алексей", "+7(999)460-12-20");
@@ -41,11 +41,11 @@ public class LoginTests extends TestBase {
     })
     @ParameterizedTest(name = "Проверка ввода невалидного логина: {0}")
     void insertNegativeNameAuthCheck(String email) {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(email, "Jvcr1234");
+        openPages.authModalForm.userAuthModalWindow(email, "Jvcr1234");
 
         checkupPages.checkForAuthorizationError();
     }
@@ -62,11 +62,11 @@ public class LoginTests extends TestBase {
     })
     @ParameterizedTest(name = "Проверка ввода логина {0} и невалидного пароля: {1}")
     void insertNegativePasswordAuthCheck(String email, String password) {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(email, password);
+        openPages.authModalForm.userAuthModalWindow(email, password);
 
         checkupPages.checkForAuthorizationError();
     }
@@ -79,11 +79,11 @@ public class LoginTests extends TestBase {
     @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
     @Test
     void insertRandomDataInAuthCheck() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(RandomUtils.getRandomEmail(), RandomUtils.getRandomString(5));
+        openPages.authModalForm.userAuthModalWindow(RandomUtils.getRandomEmail(), RandomUtils.getRandomString(5));
 
         checkupPages.checkForAuthorizationError();
     }
@@ -95,11 +95,11 @@ public class LoginTests extends TestBase {
     @DisplayName("Проверка ввода рандомного невалидного логина и пароля")
     @Test
     void insertFakerDataInAuthCheck() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.pressInputButton();
-        pageObjects.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
+        openPages.authModalForm.userAuthModalWindow(testData.getEmail(), testData.getPassword());
 
         checkupPages.checkForAuthorizationError();
     }

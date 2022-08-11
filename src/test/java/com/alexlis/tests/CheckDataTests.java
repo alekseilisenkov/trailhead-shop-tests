@@ -1,6 +1,5 @@
 package com.alexlis.tests;
 
-import com.alexlis.pages.*;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -17,7 +16,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
 
@@ -31,7 +30,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка содержания раздела Мужчины")
     @Test
     void manListPageCheck() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.getManTitle();
@@ -46,7 +45,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.switchToBannerHoodybYImage();
@@ -64,7 +63,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Добавление товара в корзину")
     @Test
     void addItemToCart() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.stepToManCatalog();
@@ -81,7 +80,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка нижних колонтитулов на главной странице")
     @Test
     void checkFootersMainPage() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
 
@@ -95,7 +94,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка функционала фильтрации товара")
     @Test
     void checkFiltersTest() {
-        pageObjects.openPage();
+        openPages.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.switchToBannerHoodybYImage();
