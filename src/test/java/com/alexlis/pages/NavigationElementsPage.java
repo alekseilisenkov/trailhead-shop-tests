@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-public class NavigationElementsPages {
+public class NavigationElementsPage {
 
     private SelenideElement
             manTitle = $$(".nav").findBy(text("Мужчины")).$("a"),

@@ -16,7 +16,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка навигационного меню на главной странице")
     @Test
     void mainPageCheck() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
 
@@ -30,10 +30,10 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка содержания раздела Мужчины")
     @Test
     void manListPageCheck() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
-        navigationElementsPages.getManTitle();
+        navigationElementsPage.getManTitle();
 
         checkupPages.checkManTitle();
     }
@@ -45,13 +45,13 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Удаление товара из корзины")
     @Test
     void deleteItemFromCart() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
-        navigationElementsPages.switchToBannerHoodybYImage();
-        itemActionsPages.addFirstItemInShoppingBag();
-        itemActionsPages.switchToShoppingBag();
-        navigationElementsPages.deleteAddedItemFromShoppingBag();
+        navigationElementsPage.switchToBannerHoodybYImage();
+        itemActionsPage.addFirstItemInShoppingBag();
+        itemActionsPage.switchToShoppingBag();
+        navigationElementsPage.deleteAddedItemFromShoppingBag();
 
         checkupPages.checkForEmptyBin();
     }
@@ -63,12 +63,12 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Добавление товара в корзину")
     @Test
     void addItemToCart() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
-        navigationElementsPages.stepToManCatalog();
-        itemActionsPages.addLastItemInShoppingBag();
-        itemActionsPages.switchToShoppingBag();
+        navigationElementsPage.stepToManCatalog();
+        itemActionsPage.addLastItemInShoppingBag();
+        itemActionsPage.switchToShoppingBag();
 
         checkupPages.checkForAddedItemInShoppingBag("XL");
     }
@@ -80,7 +80,7 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка нижних колонтитулов на главной странице")
     @Test
     void checkFootersMainPage() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
 
@@ -94,11 +94,11 @@ public class CheckDataTests extends TestBase {
     @DisplayName("Проверка функционала фильтрации товара")
     @Test
     void checkFiltersTest() {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
-        navigationElementsPages.switchToBannerHoodybYImage();
-        navigationElementsPages.filterConfig("4299");
+        navigationElementsPage.switchToBannerHoodybYImage();
+        navigationElementsPage.filterConfig("4299");
 
         checkupPages.checkForFiltersResultElement();
         checkupPages.checkForMaxValueFiltersResult("6 499");
