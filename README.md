@@ -108,3 +108,6 @@
 <p align="center">
 <img title="Allure Overview Dashboard" src="images/screens/telegram.png" >
 </p>
+
+## Запись видео из Selenoid при прохождении автотеста:
+![AddDeleteVisitTest](images/gif/123.gif)

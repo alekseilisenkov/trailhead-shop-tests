@@ -50,7 +50,7 @@ public class CheckDataTests extends TestBase {
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.switchToBannerHoodybYImage();
-        itemActionsPages.addXxlSizeItemInShoppingBag();
+        itemActionsPages.addFirstItemInShoppingBag();
         itemActionsPages.switchToShoppingBag();
         navigationElementsPages.deleteAddedItemFromShoppingBag();
 
@@ -68,10 +68,10 @@ public class CheckDataTests extends TestBase {
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
         navigationElementsPages.stepToManCatalog();
-        itemActionsPages.addXxlSizeItemInShoppingBag();
+        itemActionsPages.addLastItemInShoppingBag();
         itemActionsPages.switchToShoppingBag();
 
-        checkupPages.checkForAddedItemInShoppingBag("XXL");
+        checkupPages.checkForAddedItemInShoppingBag("XL");
     }
 
     @Tag("Main")
