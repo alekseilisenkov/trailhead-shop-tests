@@ -115,5 +115,7 @@
 ## Интеграция с Allure TestOPS:
 <img title="TestOps" src="images/screens/allure 1.png" >
 
+<img title="TestOps" src="images/screens/allure testops 2.png" >
+
 ## Запись видео из Selenoid при прохождении автотеста:
 ![Test](images/gif/123.gif)
