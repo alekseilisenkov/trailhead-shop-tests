@@ -19,10 +19,10 @@ public class SimpleTests extends TestBase {
     @EnumSource(MenuItem.class)
     @ParameterizedTest(name = "Проверка результатов поиска значения: {0}")
     void searchQueryTest(MenuItem menuItem) {
-        openPages.openPage();
+        openPage.openPage();
         confirmActionsPage.confirmAge();
         confirmActionsPage.regionConfirm();
-        searchValue.searchQuery(menuItem);
+        searchValuePage.searchQuery(menuItem);
 
         checkupPages.checkResultIncorrectSearchPage();
     }
@@ -35,7 +35,7 @@ public class SimpleTests extends TestBase {
     @DisplayName("Проверка заголовка страницы")
     @Test
     void titleTest() {
-        openPages.openPage();
+        openPage.openPage();
 
         checkupPages.simpleCheckTitle();
     }

@@ -19,13 +19,13 @@ import static io.qameta.allure.Allure.step;
 @ExtendWith(AllureJunit5.class)
 public class TestBase extends DriverSetting {
 
-    OpenPages openPages = new OpenPages();
+    OpenPage openPage = new OpenPage();
     ConfirmActionsPage confirmActionsPage = new ConfirmActionsPage();
-    NavigationElementsPages navigationElementsPages = new NavigationElementsPages();
-    ItemActionsPages itemActionsPages = new ItemActionsPages();
-    CheckupPages checkupPages = new CheckupPages();
+    NavigationElementsPage navigationElementsPage = new NavigationElementsPage();
+    ItemActionsPage itemActionsPage = new ItemActionsPage();
+    CheckupPage checkupPages = new CheckupPage();
     TestData testData = new TestData();
-    SearchValue searchValue = new SearchValue();
+    SearchValuePage searchValuePage = new SearchValuePage();
 
     @BeforeAll
     static void beforeAll() {

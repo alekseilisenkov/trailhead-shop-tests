@@ -5,9 +5,9 @@ import com.alexlis.domain.MenuItem;
 import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 
-public class SearchValue {
+public class SearchValuePage {
 
-    public SearchValue searchQuery(MenuItem menuItem) {
+    public SearchValuePage searchQuery(MenuItem menuItem) {
         step("Добавление значения в поисковую строку", () -> {
             if (menuItem == MenuItem.CAR) {
                 $("[placeholder=Поиск]").setValue(menuItem.getDescription()).pressEnter();
